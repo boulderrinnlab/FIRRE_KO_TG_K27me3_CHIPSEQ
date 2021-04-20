@@ -1,0 +1,28 @@
+## The very first thing we need to do is make the github website communicate
+with Fiji. Once this relationship is established, you don't need to do this again :)
+
+Navigate to your home directory on fiji ~/IDENTIKEY
+
+```
+cd ~
+ls -lah
+```
+
+Note that there is a .ssh folder that you can place these unique keys to let
+servers communicate securely. We can check to see if a key already exists.
+If it doesn't we will generate one with the with ssh-keygen command.
+
+```
+cd .ssh
+ls -lah
+# If it exists already, you can check out the public key using cat
+cat id_rsa.pub
+```
+
+
+This will reveal the public ssh key for fiji. If we don't have a key in this file already,
+let's create one:
+
+```
+ssh-keygen -t rsa
+```
