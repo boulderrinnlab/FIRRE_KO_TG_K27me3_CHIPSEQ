@@ -1,0 +1,75 @@
+---
+title: "setting up nextflow and git"
+output: html_document
+---
+
+
+
+## Installing Nextflow
+
+```{bash}
+
+# goto home directory 
+cd ~
+ls -lah
+# see if there is a directory called "bin"
+# if not
+mkdir bin
+#if so
+cd bin
+
+# See nextflow documentation, the standard latest version can be installed by
+wget -qO- https://get.nextflow.io | bash
+
+# For an edge release: navigate to edge release installs on nextflow:
+# https://github.com/nextflow-io/nextflow/releases
+
+wget -q0 
+
+```
+
+## Adding nextflow to path
+
+```{bash}
+
+nano .bash_profile
+
+# Add this line to .bash_profile
+
+PATH=$PATH:~/bin
+
+ctrl-x, y, return
+
+# since we added a new program to the path during an existing session
+# We need to either close the session and start a new one
+# or source the new .bash_profile
+
+source ~/.bash_profile
+
+# to be sure it's working navigate somewhere out of your bin directory e.g., ~/
+nextflow -version
+# if it is in the path it will show you the version number anywhere and is executable anywhere
+
+```
+
+## connecting to github
+
+1) Navigate to your git hub page > profile > settings > SSH and CPG keys
+
+2) Navigate to your home directory on fiji
+
+```{bash}
+# Retrieve your private SSH key
+
+cd .ssh
+cat authorize_keys
+
+# copy your key and paste into git hub SSH and CPG keys (new key button)
+
+# To test if you are now connected try:
+
+ssh -T git@github.com
+
+
+```
+
