@@ -23,8 +23,11 @@ wget -qO- https://get.nextflow.io | bash
 
 # For an edge release: navigate to edge release installs on nextflow:
 # https://github.com/nextflow-io/nextflow/releases
+# Click on desired release
+# Down at the bottom there is a nextflow link -- right click and copy for wget
 
-wget -q0 
+cd ~/bin
+wget https://github.com/nextflow-io/nextflow/releases/download/v21.04.0-edge/nextflow 
 
 ```
 
