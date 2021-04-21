@@ -1,5 +1,5 @@
-<<<<<<< HEAD
-=======
+
+
 # History files
 .Rhistory
 .Rapp.history
@@ -39,13 +39,12 @@ vignettes/*.pdf
 
 # R Environment Variables
 .Renviron
->>>>>>> 08b6c0aa323600f8ba49e309ab9dcf86eebf7073
+
 .Rproj.user
 .Rhistory
 .RData
 .Ruserdata
-<<<<<<< HEAD
-=======
+
 *.bam
 *.pdf
 *.Rproj
@@ -76,18 +75,5 @@ vignettes/*.pdf
 *fastq*
 *results*
 *work*
+*.config
 
-
-© 2021 GitHub, Inc.
-Terms
-Privacy
-Security
-Status
-Docs
-Contact GitHub
-Pricing
-API
-Training
-Blog
-About
->>>>>>> 08b6c0aa323600f8ba49e309ab9dcf86eebf7073
