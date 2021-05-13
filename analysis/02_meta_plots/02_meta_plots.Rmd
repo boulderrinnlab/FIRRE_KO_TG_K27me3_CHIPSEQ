@@ -194,6 +194,7 @@ ggplot(metaplot_profiles_df %>% filter(sample_name %in% c("KOiTg_48_IP_R1_peak_4
                      labels = c("-3kb", "TSS", "+3kb"),
                      name = "") + 
   ylab("Peak frequency") 
+ggsave("figures/metaplot.pdf")
 ```
 
 ```{r}
