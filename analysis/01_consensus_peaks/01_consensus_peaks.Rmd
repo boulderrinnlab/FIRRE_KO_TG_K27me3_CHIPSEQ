@@ -61,9 +61,9 @@ for(i in 1:length(peaks)) {
 upset(peak_ov)
 
 peak_ov_df <- peak_ov %>% t() %>% as.data.frame()
-
+pdf("figures/ko_ctrl_upset_plot.pdf")
 upset(peak_ov_df, nsets = 8, sets = c("KOiTg_IP_R1","KO_CTL_IP_R1", "KO_CTL_48_IP_R1"))
-
+dev.off()
 
 ```
 
