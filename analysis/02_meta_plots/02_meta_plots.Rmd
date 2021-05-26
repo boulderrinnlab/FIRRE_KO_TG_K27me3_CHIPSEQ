@@ -246,50 +246,6 @@ summary(promoter_peaks)
 ```
 
 
-## Make some metaplot heatmaps with deepTools
 
-```{r}
-# First we need to make a .bed file of the genes.
-gencode_gr <- rtracklayer::import("/scratch/Shares/rinn/data/gencode.v32.annotation.gtf")
-genes <- gencode_gr[gencode_gr$type == "gene"] %>% as.data.frame() %>%
-  filter(gene_type %in% c("lncRNA", "protein_coding")) %>%
-  dplyr::select(seqnames, start, end, gene_id, gene_name, strand)
-# write this out as bed file
-write.table(genes, "results/lncrna_mrna_genes_gencode_v32.bed", quote = F, row.names = F, col.names = F, sep = "\t")
-
-fl <- list.files("/scratch/Shares/rinn/JR/FIRRE_KO_TG_K27me3_CHIPSEQ/results/bwa/mergedLibrary/bigwig", pattern = ".bigWig", full.names = T)
-# Let's take just the IPs
-ip_fl <- fl[grep("_IP_", fl)]
-
-
-ip_fl[grep("WT_CTL_48_IP_R1|WTiTg_48_IP_R1", ip_fl)]
-```
-
-```{bash}
-source ~/anaconda3/bin/activate deeptools
-
-
-KO_CTL_48_IP_R1_peaks.broadPeak  KOiTg_IP_R1_peaks.broadPeak      WTiTg_48_IP_R1_peaks.broadPeak
-KO_CTL_IP_R1_peaks.broadPeak     WT_CTL_48_IP_R1_peaks.broadPeak  WTiTg_IP_R1_peaks.broadPeak
-KOiTg_48_IP_R1_peaks.broadPeak   WT_CTL_IP_R1_peaks.broadPeak
-
-
-
-computeMatrix reference-point \
--S /scratch/Shares/rinn/JR/FIRRE_KO_TG_K27me3_CHIPSEQ/results/bwa/mergedLibrary/bigwig/WTiTg_48_IP_R1.bigWig \
-/scratch/Shares/rinn/JR/FIRRE_KO_TG_K27me3_CHIPSEQ/results/bwa/mergedLibrary/bigwig/WT_CTL_48_IP_R1.bigWig \
--R results/lncrna_mrna_genes_gencode_v32.bed \
---referencePoint TSS \
--a 2000 -b 2000 \
--o WT_48_matrix.mat.gz
-
-plotHeatmap \
- -m WT_48_matrix.mat.gz \
- -out WT_48_TSS_2kb.pdf \
- --colorMap jet \
- --missingDataColor "#FFF6EB" \
- --heatmapHeight 15 \
- --plotTitle 'WT_48_TSS_2kb'
-```
 
 
